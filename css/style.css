@@ -52,26 +52,6 @@ File: scss
  * Copyright 2011-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
- 
-
- .homeLOGO
- {
-  margin: 20px;
-  background-color: rgb(255, 255, 255);
-  width: 60px;
-  height:60px;
-  border-radius: 50px;
-  cursor: pointer;
-
- }
-
- .homeLOGO i 
- {
-  padding:10px ;
-
-color: #414755;
-
- }
 :root {
   --blue: #2962FF;
   --indigo: #6610f2;
