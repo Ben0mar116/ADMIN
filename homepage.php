@@ -30,6 +30,7 @@ $ClientsCommandeS=    $Connection->fetchALL('commande');
     <link rel='stylesheet' href='plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css'>
     <!-- Custom CSS -->
     <link href='css/style.min.css' rel='stylesheet'>
+    
     <link href='css/style.css' rel='stylesheet'>
 </head>
 
@@ -170,7 +171,7 @@ $ClientsCommandeS=    $Connection->fetchALL('commande');
                                         <!-- </a> -->
                                         
                                     </div>
-                                    </div>
+                                    
                         </div>
                         </div>";
                         }
