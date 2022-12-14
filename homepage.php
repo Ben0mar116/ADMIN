@@ -21,7 +21,7 @@ $ClientsCommandeS=    $Connection->fetchALL('commande');
     <meta name='description'
         content='Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework'>
     <meta name='robots' content='noindex,nofollow'>
-    <title>Ample Admin Lite Template by WrapPixel</title>
+    <title>Gestion Commerciale</title>
     <link rel='canonical' href='https://www.wrappixel.com/templates/ample-admin-lite/' />
     <!-- Favicon icon -->
     <link rel='icon' type='image/png' sizes='16x16' href='plugins/images/favicon.png'>
@@ -110,39 +110,69 @@ $ClientsCommandeS=    $Connection->fetchALL('commande');
         
                     <!-- .col -->
                 
+
                     <div class='col-md-12 col-lg-12 col-sm-12'>
                         <div class='card white-box p-0'>
                                 <div class='card-body'>
-                                    <h3 class='box-title mb-0 ' style="margin-top: 50px;">Clients</h3>
+                                    <h3 class='box-title mb-0 ' style='margin-top: 50px;'>Clients</h3>
                                 </div>
-                                <?php 
+                                
+                                 <!-- <a style='color: #3e5569;' href='#toggle-btn'> -->
+                                    
+                                   
+                                                
+                            <?php 
                                 foreach ($Clients as $SingleClnt) {
                                     # code...
-                                    echo "<div class='comment-widgets'>
+                                    echo " <div class='extend' onclick='changeclass();' >
+
+                                    <div class='d-flex flex-row comment-row p-3 mt-0 ' >
+                                        <div class='p-2'><img src='plugins/images/users/varun.jpg' alt='user' width='50' class='rounded-circle'></div>
+                                <div class='comment-text ps-2 ps-md-3 w-100'  >
                                     
-                                    
-                                    <div class='d-flex flex-row comment-row p-3 mt-0'>
-                                    <div class='p-2'><img src='plugins/images/users/varun.jpg' alt='user' width='50' class='rounded-circle'></div>
-                                    <div class='comment-text ps-2 ps-md-3 w-100'>
+                                <!-- CLIENT  INFO--> 
+                                
+                                <h5 class='font-medium'> " . $SingleClnt['NomClient'] . "  " . $SingleClnt['RaisonSociale']  . " <span class='numCliet'> ".$SingleClnt['numClient'] ." </span><span class = 'ClientNumber'> </span> </h5>  
+                                
+                                        <!-- !!!!!  define class ClientNumber !!!!! -->
                                         
-                                    <!-- CLIENT  INFO--> 
-                                    
-                                    <h5 class='font-medium'>".$SingleClnt['NomClient']. " &nbsp ".$SingleClnt['RaisonSociale']." <span class = 'ClientNumber'> ".$SingleClnt['numClient']." </span> </h5>  
-                                    
-                                            <!-- !!!!!  define class ClientNumber !!!!! -->
+                                       
+                                        <h3>
+                                            
+                                            <i class=' trash BLUS fas fa-trash-alt'></i>
+                                        </h3>
 
-
-
-                                    <span class='mb-3 d-block'>Lorem Ipsum is simply dummy text of the printing and type setting industry.It has survived not only five centuries. </span>
-                                    <div class='comment-footer d-md-flex align-items-center'>
-                                    
-                                    
-                                    <div class='text-muted fs-2 ms-auto mt-2 mt-md-0'>April 14, 2021</div>
+                                        <div class='BLUS ''>
+                                           <div class='header' >
+                                           <h2>
+        
+                            
+                                              
+                                               <i class=' BLUS fas fa-caret-down 'id='toggledown' ></i>
+                                               
+                                            </h2>
+                                        </div>
+                                        <div class='content'>
+                                                <ul>
+                                                <li>Adresse     :".$SingleClnt['adresseClient']."</li>
+                                                <li>Ville       :".$SingleClnt['VilleClient']."</li>
+                                                <li>Pays        :".$SingleClnt['Pays']."</li>
+                                                <li>Telephone   :".$SingleClnt['Telephone']."</li>
+                                                </ul>
+                                            <!-- include table of details -->
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                        
-                            </div>";
+                                        <!-- </span> -->
+                                    
+                                        
+                                        
+                                        
+                                        <!-- </a> -->
+                                        
+                                    </div>
+                                    </div>
+                        </div>
+                        </div>";
                         }
                             ?>
                     </div>
@@ -175,7 +205,46 @@ $ClientsCommandeS=    $Connection->fetchALL('commande');
     <!--chartis chart-->
     <script src='plugins/bower_components/chartist/dist/chartist.min.js'></script>
     <script src='plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js'></script>
+    <script >
+
+
+
+//  the $(//css class //). click that's when you click on the div containing that class and does some shit
+   $('.extend').click(function () {
+
+$header = $('.header');
+//getting the next element
+$content = $header.next();
+//open up the content needed - toggle the slide- if visible, slide up, if not slidedown.
+$content.slideToggle(500, function () {
+    //execute this after slideToggle is done
+    //change text of header based on visibility of content div
+    // $header(function () {
+    //     //change text based on condition
+    //     return $content.is(':visible') ? 'BLUS fas fa-caret-up' : 'BLUS fas fa-caret-down';
+    // });
+});
+
+
+
+
+
+
+});
+function changeclass() {
+
+var NAME = document.getElementById('toggledown')
+if (NAME.className == 'BLUS fas fa-caret-up') {
+    NAME.className = 'BLUS fas fa-caret-down'
+    return;
+}
+NAME.className = 'BLUS fas fa-caret-up'
+} 
+
+
+    </script>
     <script src='js/pages/dashboards/dashboard1.js'></script>
+
 </body>
 
 </html>
