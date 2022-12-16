@@ -52,18 +52,55 @@ File: scss
  * Copyright 2011-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+td{
+  padding-top: 50px;
+}
+.homeLOGO{
+  margin-left: 30px;
+  width: 50px;
+  height: 50px;
+  background-color: #ecedee;
+  border-radius: 50px;
+  text-align: center;
+  padding-top: 3px;
+  cursor: pointer;
+  opacity: 1;
+  transition: 0.3s;
+  transition: 50 ease-in;
+}
+.homeLOGO:hover{
+  color: #ecedee;
+  background-color: black;
+  opacity: 1;
+}
 
+ td .circle{
+  margin-left: -20px;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  background-color: rgb(145, 145, 145);
+color: white;
+  border-radius:50px ;
+ }
+ .circle h2 {
+  font-size: auto;
+  padding-top: 5px;
+}
+ table{
+  margin-left:70px ;
 
+ }
+ th {
+width: auto;
+font-size: xx-large;
+
+}
  .content {
   display: none;
   
 
   /* margin-left: -300px; */
-}
-.content ul li {
-display: inline;
-
-
 }
 
 .BLUS {
@@ -75,7 +112,8 @@ display: inline;
 }
 .trash:hover{
 color: red;
-transition: ease-in-out;
+transition: 0.3;
+cursor: pointer;
 }
 
 

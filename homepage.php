@@ -115,67 +115,84 @@ $ClientsCommandeS=    $Connection->fetchALL('commande');
                     <div class='col-md-12 col-lg-12 col-sm-12'>
                         <div class='card white-box p-0'>
                                 <div class='card-body'>
-                                    <h3 class='box-title mb-0 ' style='margin-top: 50px;'>Clients</h3>
+                                    <h3 class='box-title mb-0 ' style='margin-top: 30px;'>Clients</h3>
                                 </div>
                                 
-                                 <!-- <a style='color: #3e5569;' href='#toggle-btn'> -->
-                                    
+                                <table>
+                                    <th style="padding-right:40px ;">#
                                    
-                                                
-                            <?php 
-                                foreach ($Clients as $SingleClnt) {
-                                    # code...
-                                    echo " <div class='extend' onclick='changeclass();' >
 
-                                    <div class='d-flex flex-row comment-row p-3 mt-0 ' >
-                                        <div class='p-2'><img src='plugins/images/users/varun.jpg' alt='user' width='50' class='rounded-circle'></div>
-                                <div class='comment-text ps-2 ps-md-3 w-100'  >
+                                
+                                </th>
+                                    <th>Nom</th>
+                                    <th>Raison Sociale</th>
+                                    <th >Adresse</th>
+                                    <th>Ville</th>
+                                    <th>Pays</th>
+                                    <th>telephone</th>
+                                    <th style="float: right;">Actions</th>
+
+                                    
+                    
+                       
                                     
                                 <!-- CLIENT  INFO--> 
                                 
-                                <h5 class='font-medium'> " . $SingleClnt['NomClient'] . "  " . $SingleClnt['RaisonSociale']  . " <span class='numCliet'> ".$SingleClnt['numClient'] ." </span><span class = 'ClientNumber'> </span> </h5>  
-                                
-                                        <!-- !!!!!  define class ClientNumber !!!!! -->
+                                <!-- !!!!!  define class ClientNumber !!!!! -->
+                                <?php foreach  ($Clients as $SingleClnt) {
+
+                                  echo " <tr>
+                                        <td>
+                                    <div class='circle'>
+                                        <h2>".$SingleClnt['numClient'] ." </h2>
+                                    </div>
+                                    </td>
+                                    <td>".$SingleClnt['NomClient']." </td>
+                                    <td>".$SingleClnt['RaisonSociale']."</td>
+                                    <td>".$SingleClnt['adresseClient']."</td>
+                                    <td>".$SingleClnt['VilleClient']."</td>
+                                    <td>".$SingleClnt['Pays']."</td>
+                                    <td>".$SingleClnt['Telephone']."</td>
+                                    <td> <h3>
+                                        <i class=' trash BLUS fas fa-trash-alt'></i>
+                                        <i class=' fas BLUS fa-edit'></i>
+                                        </h3>
+                                    </td>
+
+                                </tr>";
+
+                            } ?>
+                            </table>
+                          
                                         
                                        
-                                        <h3>
-                                            
-                                            <i class=' trash BLUS fas fa-trash-alt'></i>
-                                        </h3>
+                                       
 
-                                        <div class='BLUS ''>
-                                           <div class='header' >
-                                           <h2>
-        
-                            
-                                              
-                                               <i class=' BLUS fas fa-caret-down 'id='toggledown' ></i>
-                                               
-                                            </h2>
-                                        </div>
-                                        <div class='content'>
-                                                <ul>
-                                                <li>Adresse     :".$SingleClnt['adresseClient']."</li>
-                                                <li>Ville       :".$SingleClnt['VilleClient']."</li>
-                                                <li>Pays        :".$SingleClnt['Pays']."</li>
-                                                <li>Telephone   :".$SingleClnt['Telephone']."</li>
-                                                </ul>
-                                            <!-- include table of details -->
-                                        </div>
-                                    </div>
-                                        <!-- </span> -->
-                                    
-                                        
-                                        
-                                        
-                                        <!-- </a> -->
-                                        
-                                    </div>
+                                  
                                     
                         </div>
-                        </div>";
-                        }
-                            ?>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                   
+                                                
+                          
                     </div>
                 </div>
                 
