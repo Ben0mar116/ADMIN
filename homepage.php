@@ -43,7 +43,25 @@ $ClientsCommandeS=    $Connection->fetchALL('commande');
     <!-- Preloader - style you can find in spinners.css -->
     <!-- ============================================================== -->
     
-    
+    <!-- modall -->
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
@@ -94,6 +112,22 @@ $ClientsCommandeS=    $Connection->fetchALL('commande');
                                 <i class='fa fa-search'></i>
                             </a>
                         </form>
+                    </div>
+                    <!-- modal pop -->
+                    <div class='position-absolute top-50   translate-middle'>
+                        <div class="homeLOGO plus">
+                    <a  class="" data-bs-toggle="modal" data-bs-target="#exampleModal"><h1>
+
+                            <i class="fas fa-plus-circle" ></i>
+                        </h1>
+                    </a>
+                            
+                        </div>
+                        <!-- ============================================================== -->
+                        <!-- Search -->
+                        <!-- ============================================================== -->
+                        
+                      
                     </div>
                         </li>
                         <!-- ============================================================== -->
@@ -156,7 +190,7 @@ $ClientsCommandeS=    $Connection->fetchALL('commande');
                                   <h2>".$SingleClnt['numClient'] ." </h2>
                                     </div>
                                     </td>
-                                    <td>".$SingleClnt['NomClient']." </td>
+                                <td>".$SingleClnt['NomClient']." </td>
                                     <td>".$SingleClnt['RaisonSociale']."</td>
                                     <td>".$SingleClnt['adresseClient']."</td>
                                     <td>".$SingleClnt['VilleClient']."</td>
@@ -164,7 +198,10 @@ $ClientsCommandeS=    $Connection->fetchALL('commande');
                                     <td>".$SingleClnt['Telephone']."</td>
                                     <td> <h3>
                                         <i class=' trash BLUS fas fa-trash-alt'></i>
+                                        
+                                        
                                         <i class=' fas BLUS fa-edit'></i>
+                                        <i class='  fas BLUS fa-external-link-square-alt'></i>
                                         </h3>
                                     </td>
                                     
