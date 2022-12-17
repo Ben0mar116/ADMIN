@@ -30,6 +30,10 @@ $ClientsCommandeS=    $Connection->fetchALL('commande');
     <link rel='stylesheet' href='plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css'>
     <!-- Custom CSS -->
     <link href='css/style.min.css' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jq-3.6.0/dt-1.13.1/sl-1.5.0/datatables.min.css"/>
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.13.1/sl-1.5.0/datatables.min.css"/> -->
+ 
+ 
     
     <link href='css/style.css' rel='stylesheet'>
 </head>
@@ -83,7 +87,9 @@ $ClientsCommandeS=    $Connection->fetchALL('commande');
                         
                         
                         <form role='search' class='app-search d-none d-md-block me-3'>
-                            <input type='text' placeholder='Search...' class='form-control mt-0'>
+                            <input type='text' placeholder='Search...' class='form-control mt-0' id="mySearchText">
+                            <!-- <input type="text" id="mySearchText" placeholder="Search..."> -->
+
                             <a href='' class='active'>
                                 <i class='fa fa-search'></i>
                             </a>
@@ -118,33 +124,36 @@ $ClientsCommandeS=    $Connection->fetchALL('commande');
                                     <h3 class='box-title mb-0 ' style='margin-top: 30px;'>Clients</h3>
                                 </div>
                                 
-                                <table>
-                                    <th style="padding-right:40px ;">#
-                                   
+                                <table id="datatable" class="display">
+                                <thead>
+                                    <tr>
 
-                                
-                                </th>
-                                    <th>Nom</th>
-                                    <th>Raison Sociale</th>
-                                    <th >Adresse</th>
-                                    <th>Ville</th>
-                                    <th>Pays</th>
-                                    <th>telephone</th>
-                                    <th style="float: right;">Actions</th>
-
+                                        
+                                        <th >#</th>
+                                        <th>Nom</th>
+                                        <th>Raison Sociale</th>
+                                        <th >Adresse</th>
+                                        <th>Ville</th>
+                                        <th>Pays</th>
+                                        <th>telephone</th>
+                                        <th style="float: right;">Actions</th>
+                                        
+                                    </tr>
+                                </thead>
                                     
                     
                        
                                     
                                 <!-- CLIENT  INFO--> 
-                                
-                                <!-- !!!!!  define class ClientNumber !!!!! -->
-                                <?php foreach  ($Clients as $SingleClnt) {
+                                <tbody>
 
+                                    <!-- !!!!!  define class ClientNumber !!!!! -->
+                                    <?php foreach  ($Clients as $SingleClnt) {
+                                        
                                   echo " <tr>
-                                        <td>
-                                    <div class='circle'>
-                                        <h2>".$SingleClnt['numClient'] ." </h2>
+                                  <td>
+                                  <div class='circle'>
+                                  <h2>".$SingleClnt['numClient'] ." </h2>
                                     </div>
                                     </td>
                                     <td>".$SingleClnt['NomClient']." </td>
@@ -158,18 +167,19 @@ $ClientsCommandeS=    $Connection->fetchALL('commande');
                                         <i class=' fas BLUS fa-edit'></i>
                                         </h3>
                                     </td>
-
-                                </tr>";
-
-                            } ?>
+                                    
+                                    </tr>";
+                                    
+                                } ?>
+                        </tbody>
                             </table>
                           
                                         
-                                       
+                            
                                        
 
-                                  
-                                    
+                            
+                            
                         </div>
                         </div>
 
@@ -223,46 +233,13 @@ $ClientsCommandeS=    $Connection->fetchALL('commande');
     <!--chartis chart-->
     <script src='plugins/bower_components/chartist/dist/chartist.min.js'></script>
     <script src='plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js'></script>
-    <script >
+    <script src="https://code.jquery.com/jquery-3.6.2.min.js" integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA=" crossorigin="anonymous"></script>
 
-
-
-//  the $(//css class //). click that's when you click on the div containing that class and does some shit
-   $('.extend').click(function () {
-
-$header = $('.header');
-//getting the next element
-$content = $header.next();
-//open up the content needed - toggle the slide- if visible, slide up, if not slidedown.
-$content.slideToggle(500, function () {
-    //execute this after slideToggle is done
-    //change text of header based on visibility of content div
-    // $header(function () {
-    //     //change text based on condition
-    //     return $content.is(':visible') ? 'BLUS fas fa-caret-up' : 'BLUS fas fa-caret-down';
-    // });
-});
-
-
-
-
-
-
-});
-function changeclass() {
-
-var NAME = document.getElementById('toggledown')
-if (NAME.className == 'BLUS fas fa-caret-up') {
-    NAME.className = 'BLUS fas fa-caret-down'
-    return;
-}
-NAME.className = 'BLUS fas fa-caret-up'
-} 
-
-
-    </script>
-    <script src='js/pages/dashboards/dashboard1.js'></script>
-
+ <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jq-3.6.0/dt-1.13.1/sl-1.5.0/datatables.min.js"></script>
+ <script> $(document).ready(function () {
+    $('#datatable').DataTable();
+});</script>
+ 
 </body>
 
 </html>
