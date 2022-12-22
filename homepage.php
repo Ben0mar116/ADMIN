@@ -1,4 +1,24 @@
 <?php include 'header.php'; ?>
+
+
+
+<?php 
+if (isset($_POST['NomClient'])) {
+    $values = array($_POST["NomClient"] , $_POST["RaisonSociale"] ,$_POST["adresseClient"] ,$_POST["VilleClient"] ,$_POST["Pays"] ,$_POST["Telephone"]);
+    // var_dump($values);
+    $Connection->InsertValues('Client' , $values);
+    
+
+
+
+
+
+    $Clients=    $Connection->fetchALL('client');
+
+    # code...
+}
+
+?>
         <!-- ============================================================== -->
         <!-- End Topbar header -->
         <!-- ============================================================== -->

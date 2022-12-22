@@ -12,6 +12,9 @@ $ClientsCommandeS=    $Connection->fetchALL('commande');
 <html dir='ltr' lang='en'>
 
 <head>
+    <script>
+        
+    </script>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <!-- Tell the browser to be responsive to screen width -->
@@ -43,8 +46,11 @@ $ClientsCommandeS=    $Connection->fetchALL('commande');
     <!-- Preloader - style you can find in spinners.css -->
     <!-- ============================================================== -->
     
-    <!-- modall -->
+    <!-- MODALS-->
 
+
+
+    <!-- CLIENT MODAL -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -55,25 +61,69 @@ $ClientsCommandeS=    $Connection->fetchALL('commande');
       <div class="modal-body">
         <form action="homepage.php" method="post">
             
-            <input type="text" name="nom">
-            <input type="text" name="RaisonSociale">
+            <div class="form-floating mb-2">
+    <input type="text"   name="NomClient" class="form-control" required id="floatingInput" placeholder=" "/>
+    <label for="floatingInput">Nom du Client<span class="required">*</span></label>
+</div>
+
+
+    <div class="form-floating mb-2">
+    <input type="text"  name="RaisonSociale"  required class="form-control" id="RS" placeholder=" "/>
+    <label for="RS">Raison Sociale <span class="required">*</span></label>
+    </div>
+    <div class="form-floating mb-2">
+    <textarea class="form-control" name="adresseClient" required rows="3" id="comment" placeholder=" "></textarea>
+    <label for="comment">Adresse<span class="required">*</span></label>
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr;">
+
+        <div class="form-floating mb-2">
+            
+            <input type="text" style="width:220px;"  name="Pays" class="form-control" id="floatingInput" placeholder="Maroc"  value="Maroc"  />
+            <label for="comment">Pays</label>
+        </div>
+        <div class="form-floating mb-2" style="margin-left: 15px;">
+            
+            <input type="text" style="width:220px;"  name="VilleClient" required class="form-control" id="floatingInput" placeholder=" "  />
+            <label for="comment">Ville<span class="required">*</span></label>
+        </div>
+      
+    </div>
+    
+    <div class="form-floating mb-2">
+            
+            <input type="tel"   name="Telephone" class="form-control"  required id="floatingInput" placeholder=" "  />
+            <label for="comment">Telephone<span class="required">*</span></label>
+        </div>
+        
+
+
+            <!-- <input type="text" name="RaisonSociale">
             <input type="text" name="Adresse">
             <input type="text" name="Pays" placeholder="Maroc">
             <input type="text" name="Ville">
-            <input type="text" name="Telephone">
+            <input type="text" name="Telephone"> -->
 
-qfqwdqwd
+
+
+
+
+
 <!-- zwa9 -->
 
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Confirmer</button>
-      </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    <button type="submit" class="btn btn-primary">Confirmer</button>
+</div>
+</form>
     </div>
   </div>
 </div>
+
+
+<!-- Commande  Modal -->
+   
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
@@ -130,7 +180,30 @@ qfqwdqwd
                     <!-- modal pop -->
                     <div class='position-absolute top-50   translate-middle'>
                         <div class="homeLOGO plus">
-                    <a  class="" data-bs-toggle="modal" data-bs-target="#exampleModal"><h1>
+                    <a  class="" data-bs-toggle="modal" data-bs-target=
+                    <?php
+                   switch ($_SERVER['PHP_SELF']) {
+                    case '/client.php':
+                       echo "#CommModal";
+                        break;
+                    case '/homepage.php':
+                       echo "#exampleModal";
+                        break;
+                    
+                    default:
+                        # code...
+                        break;
+                        
+                   }
+                    
+                    ?>
+                    
+                    
+                   
+                    
+                    
+                    
+                    ><h1>
 
                             <i class="fas fa-plus-circle" ></i>
                         </h1>
@@ -155,3 +228,4 @@ qfqwdqwd
                 </div>
             </nav>
         </header>
+        

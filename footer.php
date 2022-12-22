@@ -18,7 +18,13 @@
  <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jq-3.6.0/dt-1.13.1/sl-1.5.0/datatables.min.js"></script>
  <script> $(document).ready(function () {
     $('#datatable').DataTable();
-});</script>
+});
+
+
+
+
+</script>
+
  
 </body>
 
