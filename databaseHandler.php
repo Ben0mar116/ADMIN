@@ -106,6 +106,58 @@ return $result;
 
   }
   
+ function ModifyValues( $table ,  $id , $values) 
+  {
+    
+
+
+  switch ($table) {
+    case 'commande':
+      # code...
+      
+      
+      
+
+           $data = [
+             'Client' => $values[0],
+             'Date' => $values[1],
+
+           ];
+           $sql = "UPDATE  commande  SET numClient =  :Client   , dateCommade = :Date where numCommande  = $id " ;
+
+
+           $this->cxn->prepare($sql)->execute($data);
+    break;
+
+    case 'Client':
+      # code...
+      
+      
+      
+
+           $data = [
+             'NomClient' => $values[0],
+             'RaisonSociale' => $values[1],
+             'adresseClient' => $values[2],
+             'VilleClient' => $values[3],
+             'Pays' => $values[4],
+             'Telephone' => $values[5],
+
+           ];
+           $sql = "UPDATE  client  SET NomClient = :NomClient , RaisonSociale = :RaisonSociale   , adresseClient = :adresseClient  ,
+            VilleClient = :VilleClient , Pays = :Pays  , Telephone = :Telephone where numClient = $id ";
+           $this->cxn->prepare($sql)->execute($data);
+    break;
+
+
+
+
+
+    }
+
+
+  }
+  
 
   }
 
