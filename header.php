@@ -120,6 +120,36 @@ $ClientsCommandeS=    $Connection->fetchALL('commande');
     </div>
   </div>
 </div>
+<!-- PRODUCT MODAL -->
+
+    <div class="modal fade" id="produitMODAL" tabindex="-1" aria-labelledby="Product" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="Product">Ajouter un Produit</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="produit.php" method="post">
+            
+           
+
+<!-- product form -->
+
+
+
+
+<!-- zwa9 -->
+
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    <button type="submit" class="btn btn-primary">Confirmer</button>
+</div>
+</form>
+    </div>
+  </div>
+</div>
 
 
 
@@ -188,6 +218,10 @@ $ClientsCommandeS=    $Connection->fetchALL('commande');
                         break;
                     case '/homepage.php':
                        echo "#exampleModal";
+                        break;
+                    
+                    case '/produit.php':
+                       echo "#produitMODAL";
                         break;
                     
                     default:

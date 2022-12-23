@@ -19,10 +19,10 @@
  <script> $(document).ready(function () {
     $('#datatable').DataTable();
 });
-
-
-
-
+</script>
+ <script> $(document).ready(function () {
+    $('#productTABLE').DataTable();
+});
 </script>
 
  
