@@ -20,7 +20,7 @@
     $('#datatable').DataTable();
 });
 </script>
- <script> $(document).ready(function () {
+<script> $(document).ready(function () {
     $('#productTABLE').DataTable();
 });
 </script>

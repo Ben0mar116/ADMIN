@@ -3,8 +3,8 @@
 require_once('databaseHandler.php');
  $Connection = new Databases;
 
-$Clients=    $Connection->fetchALL('client');
-$ClientsCommandeS=    $Connection->fetchALL('commande');
+$Clients= $Connection->fetchALL('client');
+$ClientsCommandeS= $Connection->fetchALL('commande');
 ?>
 
 
@@ -52,6 +52,7 @@ $ClientsCommandeS=    $Connection->fetchALL('commande');
 
     <!-- CLIENT MODAL -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -120,7 +121,10 @@ $ClientsCommandeS=    $Connection->fetchALL('commande');
     </div>
   </div>
 </div>
-<!-- PRODUCT MODAL -->
+
+
+
+                                                <!-- PRODUCT MODAL -->
 
     <div class="modal fade" id="produitMODAL" tabindex="-1" aria-labelledby="Product" aria-hidden="true">
   <div class="modal-dialog">
@@ -132,12 +136,27 @@ $ClientsCommandeS=    $Connection->fetchALL('commande');
       <div class="modal-body">
         <form action="produit.php" method="post">
             
-           
+        <div class="form-floating mb-2">
+    <input type="text"   name="NomProduitInsert" class="form-control" required id="floatingInput" placeholder=" "/>
+    <label for="floatingInput">Nom du Produit<span class="required">*</span></label>
+</div>
 
-<!-- product form -->
 
+    <div class="form-floating mb-2">
+    <input type="text"  name="PUnitaire"  required class="form-control" id="RS" placeholder=" "/>
+    <label for="RS">Prix Unitaire <span class="required">*</span></label>
+    </div>
+    <div class="form-floating mb-2">
+    <input type="text"  name="QteStock"  required class="form-control" id="RS" placeholder=" "/>
+    <label for="RS">Quantite du Stock <span class="required">*</span></label>
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr;">
 
-
+        <div class="form-floating mb-2">
+            <input type="text" style="width:220px;"  name="Dispo" class="form-control" id="floatingInput" placeholder=" "    />
+            <label for="comment">Dispo</label>
+        </div>
+    </div>
 
 <!-- zwa9 -->
 
@@ -151,9 +170,6 @@ $ClientsCommandeS=    $Connection->fetchALL('commande');
   </div>
 </div>
 
-
-
-   
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
@@ -170,7 +186,7 @@ $ClientsCommandeS=    $Connection->fetchALL('commande');
                 <!-- ============================================================== -->
                 <div class='navbar-collapse collapse' id='navbarSupportedContent' data-navbarbg='skin5'>
 
-    <a href="/homepage.php">
+    <a href="homepage.php">
 
         <div class='homeLOGO'>
             
@@ -181,15 +197,21 @@ $ClientsCommandeS=    $Connection->fetchALL('commande');
         </div>
     </a>
 
+    <a href="produit.php">
+
+<div class='homeLOGO'>
+    
+    <h1>
+        <i class='fas fa-cubes'></i>
+    </h1>
+    
+</div>
+</a>
+
                     <!-- ============================================================== -->
                     <!-- Right side toggle and nav items -->
                     <!-- ============================================================== -->
                     <ul class='navbar-nav ms-auto d-flex align-items-center'>
-
-
-
-
-
 
                     <div class='position-absolute top-50 start-50 translate-middle'>
 
@@ -208,35 +230,34 @@ $ClientsCommandeS=    $Connection->fetchALL('commande');
                         </form>
                     </div>
                     <!-- modal pop -->
-                    <div class='position-absolute top-50   translate-middle'>
+                    <div class='position-absolute top-50 translate-middle'>
                         <div class="homeLOGO plus">
+
+
                     <a  class="" data-bs-toggle="modal" data-bs-target=
                     <?php
                    switch ($_SERVER['PHP_SELF']) {
-                    case '/client.php':
-                       echo "#CommModal";
+                    case '/ADMIN/client.php':
+                       echo "#CommModal";                           
                         break;
-                    case '/homepage.php':
+                    case '/ADMIN/homepage.php':
                        echo "#exampleModal";
                         break;
-                    
-                    case '/produit.php':
+                    case '/ADMIN/produit.php':
                        echo "#produitMODAL";
                         break;
+
+                        case '/ADMIN/LigneCommande.php':
+                            echo "#LCOModal";
+                             break;
                     
                     default:
                         # code...
                         break;
                         
                    }
-                    
+
                     ?>
-                    
-                    
-                   
-                    
-                    
-                    
                     ><h1>
 
                             <i class="fas fa-plus-circle" ></i>

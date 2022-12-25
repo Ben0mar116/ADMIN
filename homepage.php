@@ -3,35 +3,38 @@
 
 
 <?php 
+//Delete
+if (isset($_POST["DELCLT"])) {
+    
+    $idd = $_POST["DELCLT"] ;
+
+    $Connection->Deletebyid('Client' , $idd);
+
+    $Clients=$Connection->fetchALL('client');
+
+    # code...
+}
+//Insert
 if (isset($_POST["NomClient"])) {
     $values = array($_POST["NomClient"] , $_POST["RaisonSociale"] ,$_POST["adresseClient"] ,$_POST["VilleClient"] ,$_POST["Pays"] ,$_POST["Telephone"]);
     // var_dump($values);
     $Connection->InsertValues('Client' , $values);
-    
-
-
-
-
 
     $Clients=    $Connection->fetchALL('client');
 
     # code...
 }
+//Modify
 if (isset($_POST["ID"])) {
     $id = $_POST["ID"];
         $values = array($_POST["nameCLT"] , $_POST["RaisonSociale"] ,$_POST["adresseClient"] ,$_POST["VilleClient"] ,$_POST["Pays"] ,$_POST["Telephone"]);
     // var_dump($values);
     $Connection->ModifyValues('Client' ,$id , $values);
-    
-
-
-
-
 
     $Clients=    $Connection->fetchALL('client');
 
     # code...
-}
+}   
 
 ?>
         <!-- ============================================================== -->
@@ -91,18 +94,17 @@ if (isset($_POST["ID"])) {
                                     <td> <h3>
                                         
                                     
-                                        <i class=' trash BLUS fas fa-trash-alt'></i>
-                                        
-                                        
+                                        <a href = ''data-bs-toggle='modal' data-bs-target='#deleteClient".$SingleClnt["numClient"]."'><i class=' trash BLUS fas fa-trash-alt'></i>
                                         <a href = ''data-bs-toggle='modal' data-bs-target='#editClient".$SingleClnt["numClient"]."'><i class=' fas BLUS fa-edit'></i></a>
-
-                                        <a href = '/client.php?id=".$SingleClnt["numClient"]." '><i class='  fas BLUS fa-external-link-square-alt'></i></a>
+                                        <a href = 'client.php?id=".$SingleClnt["numClient"]." '><i class='  fas BLUS fa-external-link-square-alt'></i></a>
                                         </h3>
                                     </td>
                                     
                                     </tr>
                                     
                                     <!-- edit Client -->
+
+
     <div class='modal fade' id='editClient".$SingleClnt["numClient"]."' tabindex='-1' aria-labelledby='editC' aria-hidden='true'>
   <div class='modal-dialog'>
     <div class='modal-content'>
@@ -149,14 +151,6 @@ if (isset($_POST["ID"])) {
             </div>
             <input type='hidden'   name='ID' value = '".$SingleClnt["numClient"]." ' />
         
-
-
-          
-
-
-
-
-
 <!-- zwa9 -->
 
 </div>
@@ -169,17 +163,31 @@ if (isset($_POST["ID"])) {
   </div>
 </div>
 
+                                                <!-- Delete Client -->
 
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    " ;
+<div class='modal fade' id='deleteClient".$SingleClnt["numClient"]."' tabindex='-2' aria-labelledby='deleteP' aria-hidden='true'>
+  <div class='modal-dialog'>
+    <div class='modal-content'>
+      <div class='modal-header'>
+        <h5 class='modal-title' id='editC'>Are you sure you want to delete client # ".$SingleClnt["numClient"]." </h5>
+        <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+      </div>
+      <div class='modal-body'>
+
+        <form action='homepage.php' method='post'>
+        <input type='hidden'   name='DELCLT' value = '".$SingleClnt["numClient"]."' />
+        <div class='modal-footer'>
+    <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
+    <button type='submit' class='btn btn-primary'>Confirmer</button>
+                </div>
+        </form>
+    </div>
+  </div>
+</div>
+
+
+
+";
                                     
                                 } ?>
                         </tbody>
@@ -196,23 +204,6 @@ if (isset($_POST["ID"])) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                   
-                                                
                           
                     </div>
                 </div>
