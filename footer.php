@@ -23,6 +23,22 @@
 <script> $(document).ready(function () {
     $('#productTABLE').DataTable();
 });
+const input2 = document.getElementById("postfix");
+
+input2.addEventListener("input", (e) => {
+    const { value } = e.target;
+
+    const len = value.length;
+    const dolarIndex = value.indexOf("$");
+    const number = value.substring(0, len - 1);
+
+    console.log(dolarIndex === -1);
+
+    if (dolarIndex !== len - 1 || dolarIndex === -1 || isNaN(number)) {
+        e.target.value = "$";
+        e.target.setSelectionRange(dolarIndex, dolarIndex);
+    }
+});
 </script>
 
  

@@ -41,8 +41,26 @@ if (isset($_GET["id"])) {
 $verify_Com = $Connection->fetchDataBYONE('commande' , 'numCommande ' , $_GET["id"])->fetchColumn();
 if ($verify_Com == 0 ) {
     include_once 'error.php';
+    return;
 }
+
+
+// verify integrity ie verify product 
+
+
 if(isset($_POST["ProdRef"])){
+ $insertVerify =  $Connection->fetchDataBYONE('produit' , 'refProduit' ,$_POST["ProdRef"] )->fetchColumn();
+  if ($insertVerify == 0 ) {
+    include_once 'error.php';
+    return;
+}
+
+
+
+
+
+
+
     $values =array($_POST["ProdRef"], $_POST["QteProd"] ,$_GET["id"]);
     $Connection->InsertValues('Ligne_Commande' , $values);
 
@@ -50,6 +68,12 @@ if(isset($_POST["ProdRef"])){
 }
 
 if(isset($_POST["Edit"])){
+  $insertVerify =  $Connection->fetchDataBYONE('produit' , 'refProduit' ,$_POST["RefProduct"] )->fetchColumn();
+  if ($insertVerify == 0 ) {
+    include_once 'error.php';
+    return;
+}
+
     $values =array($_POST["RefProduct"], $_POST["QuantCom"]);
     $Connection->ModifyLcom($_GET["id"],$_POST["ProdP"],$values);
 

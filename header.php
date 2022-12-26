@@ -22,7 +22,7 @@ $ClientsCommandeS= $Connection->fetchALL('commande');
     <meta name='keywords'
         content='wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Ample lite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Ample admin lite dashboard bootstrap 5 dashboard template'>
     <meta name='description'
-        content='Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework'>
+        content='Ample admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework'>
     <meta name='robots' content='noindex,nofollow'>
     <title>Gestion Commerciale</title>
     <link rel='canonical' href='https://www.wrappixel.com/templates/ample-admin-lite/' />
@@ -143,20 +143,21 @@ $ClientsCommandeS= $Connection->fetchALL('commande');
 
 
     <div class="form-floating mb-2">
-    <input type="text"  name="PUnitaire"  required class="form-control" id="RS" placeholder=" "/>
-    <label for="RS">Prix Unitaire <span class="required">*</span></label>
+
+    <input id="postfix" value="$" name="PUnitaire"type="text" id="form2" class="form-control"  required placeholder=" "/>
+    <label  for="form2" >Prix Unitaire <span class="required">*</span></label>
     </div>
     <div class="form-floating mb-2">
-    <input type="text"  name="QteStock"  required class="form-control" id="RS" placeholder=" "/>
+    <input type="number"  name="QteStock"  required class="form-control" id="RS" placeholder=" "/>
     <label for="RS">Quantite du Stock <span class="required">*</span></label>
     </div>
-    <div style="display: grid; grid-template-columns: 1fr 1fr;">
 
-        <div class="form-floating mb-2">
-            <input type="text" style="width:220px;"  name="Dispo" class="form-control" id="floatingInput" placeholder=" "    />
-            <label for="comment">Dispo</label>
-        </div>
-    </div>
+
+    <div  class="custom-control custom-switch">
+  <input  name="Dispo" type="checkbox" value="" class="custom-control-input"  id="customSwitches">
+  <label  class="custom-control-label" for="customSwitches">Disponible</label>
+</div>
+       
 
 <!-- zwa9 -->
 
@@ -237,17 +238,17 @@ $ClientsCommandeS= $Connection->fetchALL('commande');
                     <a  class="" data-bs-toggle="modal" data-bs-target=
                     <?php
                    switch ($_SERVER['PHP_SELF']) {
-                    case '/ADMIN/client.php':
+                    case '/admin/client.php':
                        echo "#CommModal";                           
                         break;
-                    case '/ADMIN/homepage.php':
+                    case '/admin/homepage.php':
                        echo "#exampleModal";
                         break;
-                    case '/ADMIN/produit.php':
+                    case '/admin/produit.php':
                        echo "#produitMODAL";
                         break;
 
-                        case '/ADMIN/LigneCommande.php':
+                        case '/admin/LigneCommande.php':
                             echo "#LCOModal";
                              break;
                     

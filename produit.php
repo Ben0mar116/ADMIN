@@ -1,7 +1,18 @@
 <?php include 'header.php'?>
+
 <?php 
+ if ( isset( $_POST["Dispo"])){
+    
+  $_POST["Dispo"] = 1;
+
+}else{
+
+  $_POST["Dispo"] = 0;
+}
 // insert produit
 if (isset($_POST["NomProduitInsert"])) {
+ 
+ 
 
     $values = array($_POST["NomProduitInsert"] , $_POST["PUnitaire"] ,$_POST["QteStock"] ,$_POST["Dispo"]);
 
@@ -118,19 +129,19 @@ if (isset($_POST["DELREF"])) {
     <label for='floatingInput'>Nom du Produit<span class='required'>*</span></label>
 </div>
     <div class='form-floating mb-2'>
-    <input type='text'  name='prixUnitaire'  value = '".$eProd["PrixUnitaire"]." ' required class='form-control' id='RS' placeholder=' '/>
+    <input type='text' id='postfix'  name='prixUnitaire'  value = '".$eProd["PrixUnitaire"]." $' required class='form-control' id='RS' placeholder=' '/>
     <label for='RS'>Prix Unitaire <span class='required'>*</span></label>
 </div>
     <div class='form-floating mb-2'>
-    <input class='form-control' name='QteStocke'  value = '".$eProd["qteStockee"]." ' required rows='3' id='comment' placeholder=' '/>
+    <input class='form-control'  type='number' name='QteStocke'  value = '".$eProd["qteStockee"]." ' required  id='comment' placeholder=' '/>
     <label for='comment'>Quantite du Stock<span class='required'>*</span></label>
 </div>
-    <div style='display: grid; grid-template-columns: 1fr 1fr;'>
+  
 
-    <div class='form-floating mb-2'>
-        <input type='text' style='width:220px;' value = '".$eProd["indisponible"]." '  name='Dispo' class='form-control' id='floatingInput' placeholder='Maroc'  value='Maroc'  />
-        <label for='comment'>Dispo</label>
-</div>
+    <div  class='custom-control custom-switch'>
+    <input  name='Dispo' type='checkbox' value='".$eProd["indisponible"]."' class='custom-control-input'  id='ss'/>
+    <label  class='custom-control-label'for='ss'>Disponible</label>
+    </div>
     </div>
     <input type='hidden'   name='REF' value = '".$eProd["refProduit"]."' />
 <!-- zwa9 -->
@@ -155,7 +166,7 @@ if (isset($_POST["DELREF"])) {
   <div class='modal-dialog'>
     <div class='modal-content'>
       <div class='modal-header'>
-        <h5 class='modal-title' id='editC'>Are you sure you want to delete product # # ".$eProd["refProduit"]." </h5>
+        <h5 class='modal-title' id='editC'>Are you sure you want to delete product # ".$eProd["refProduit"]." </h5>
         <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
       </div>
       <div class='modal-body'>
