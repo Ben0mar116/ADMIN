@@ -221,10 +221,10 @@ $ClientsCommandeS= $Connection->fetchALL('commande');
                         <!-- ============================================================== -->
                         
                         
-                        <form role='search' class='app-search d-none d-md-block me-3'>
-                            <input type='text' placeholder='Search...' class='form-control mt-0' id="mySearchText">
+                        <form role='search' class='app-search d-none d-md-block me-3' action= "search.php" method="get">
+                            <input type='text' name="query" placeholder='Search...' class='form-control mt-0' id="mySearchText">
                             <!-- <input type="text" id="mySearchText" placeholder="Search..."> -->
-
+                                
                             <a href='' class='active'>
                                 <i class='fa fa-search'></i>
                             </a>

@@ -26,15 +26,19 @@ if (isset($_POST['dateCMD'])) {
 
 
 
- public function getPDO()
- {
-  return $this->cxn;
  
-
-
-}
-
-
+  public function verify_query($table ,$info)
+  {$vars= $this->fetchALL($table);
+      foreach ($vars as $var) {
+          if( in_array($info, $var)  == true){
+                   return $var;
+          }
+      
+      }
+      return null;
+      # code...
+  }
+  
 function fetchDataBYONEhell (  $table,   $table_element ,$attribute  ){
     
   $sql = "SELECT numCommande , numClient , dateCommade  FROM " . $table . " where  " .$table_element . " =  '" . $attribute  ." ' ;";
