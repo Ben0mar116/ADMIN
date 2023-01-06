@@ -107,6 +107,18 @@ return $result;
 
            $this->cxn->prepare($sql)->execute($data);
     break;
+    case 'archive':
+      # code...
+           $data = [
+             'Client' => $values[0],
+             'Date' => $values[1],
+
+           ];
+           $sql = "INSERT INTO archive (numClient, dateCommade) VALUES (:Client,:Date)";
+
+
+           $this->cxn->prepare($sql)->execute($data);
+    break;
 
     case 'Client':
       # code...

@@ -214,7 +214,7 @@ if (isset($_GET['query'])) {
                                         echo "<td> <h3><i style='margin-right: 100px;' class='  fas BLUS fa-solid fa-check'></i></h3> </td>";
                                     }
                                     if($search_Produits["indisponible"] == 0){
-                                        echo"<td> <h3><i  style='margin-right: 100px;' class='fas BLUS fa-sharp fa-solid fa-exclamation'></i></h3> </td>";
+                                        echo"<td> <h3><i  style='margin-right: 100px;' class='BLUS fas fa-times'></i></h3> </td>";
                                     }
 
 

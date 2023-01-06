@@ -4,7 +4,9 @@ require_once('databaseHandler.php');
  $Connection = new Databases;
 
 $Clients= $Connection->fetchALL('client');
+$Produits= $Connection->fetchALL('produit');
 $ClientsCommandeS= $Connection->fetchALL('commande');
+$Archive= $Connection->fetchALL('archive');
 ?>
 
 
@@ -187,27 +189,35 @@ $ClientsCommandeS= $Connection->fetchALL('commande');
                 <!-- ============================================================== -->
                 <div class='navbar-collapse collapse' id='navbarSupportedContent' data-navbarbg='skin5'>
 
-    <a href="homepage.php">
-
-        <div class='homeLOGO'>
-            
+                    
+                    
+<div class='homeLOGO'>
+                    <a href="homepage.php">
             <h1>
                 <i class='fas fa-home'></i>
             </h1>
             
+        </a>
         </div>
-    </a>
 
+        
+    <div class='homeLOGO'>
     <a href="produit.php">
-
-<div class='homeLOGO'>
-    
     <h1>
         <i class='fas fa-cubes'></i>
     </h1>
     
-</div>
 </a>
+</div>
+    <div class='homeLOGO'>
+    <a href="archive.php">
+    <h1 style="padding-top: 3px;">
+
+        <i class='fas fa-archive'></i>
+    </h1>
+    
+</a>
+</div>
 
                     <!-- ============================================================== -->
                     <!-- Right side toggle and nav items -->

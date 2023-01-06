@@ -45,7 +45,8 @@ if ($verify_Client == 0 ) {
 }
 $Client = $Connection->fetchDataBYONE('client' , 'numClient' , $_GET["id"])->fetch();  // current client
 $Commades = $Connection->fetchDataBYONEhell('commande' , 'commande.numClient' , $_GET["id"]); // client's commande 
-$idclt = $_GET["id"];
+$idclt = $_GET["id"]; // all numb client for integrity
+
 }
 
 
@@ -65,6 +66,12 @@ $idclt = $_POST["REF"];
 //                                        DELETE 
 
 if(isset($_POST["DELCOM"])){
+// insert into archive
+
+$values =array($_GET["id"], $_POST["Arch_Date"]);
+
+$Connection->InsertValues('archive' ,$values );
+
 
   $Connection->Deletebyid( 'commande' ,  $_POST["DELCOM"]);
 
@@ -139,12 +146,23 @@ if (is_array($Commades)){
             
 <div class='form-floating mb-2'>
     <input type='Select date'   name='DateCom' class='form-control' value='".$Commade["dateCommade"]." ' required id='floatingInput' placeholder=' '/>
-    <label for='floatingInput'>Nom du Produit<span class='required'>*</span></label>
+    <label for='floatingInput'>Nom du Produit</label>
 </div>
 
 <div class='form-floating mb-2'>
-    <input type='text'   name='NumberClient' class='form-control' value='".$Commade["numClient"]." ' required id='floatingInput' placeholder=' '/>
-    <label for='floatingInput'>Numero du Client<span class='required'>*</span></label>
+    <select name = 'NumberClient'class='form-select' aria-label='Default select example'>
+    <option  value='".$Commade["numClient"]." '  selected> Numero du Client</option>
+    ";
+    foreach ($Clients as $Num) {
+      # code...
+     echo " <option value='".$Num["numClient"]. "'>
+     ".$Num["numClient"]."     
+     </option>";
+    }
+   
+  echo " </select>
+
+
 </div>
     <input type='hidden'   name='REFPROD' value = '".$Commade["numCommande"]."' />
     <input type='hidden'   name='REF' value = '".$idclt."' />
@@ -177,6 +195,7 @@ if (is_array($Commades)){
 
         <form action='client.php?id=".$idclt." ' method='post'>
         <input type='hidden'   name='DELCOM' value = '".$Commade["numCommande"]."' />
+        <input type='hidden'   name='Arch_Date' value = '".$Commade["dateCommade"]."' />
         <input type='hidden'   name='REFIAL' value = '".$Commade["numClient"]."' />
         <div class='modal-footer'>
     <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>

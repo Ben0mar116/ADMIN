@@ -1,3 +1,7 @@
+<?php 
+include 'header.php';
+?>
+
 <div class="modal fade" id="LCOModal" tabindex="-1" aria-labelledby="modalCommandeLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -8,13 +12,34 @@
       <div class="modal-body">
         <form action="LigneCommande.php?id=<?php echo $_GET["id"]?>" method="post">
         <div class="form-floating mb-2">
-        <input type="text"  name="ProdRef"  required class="form-control" id="RS" placeholder=" "/>
-            <label for="RS">Numero du Produit <span class="required">*</span></label></div>
+          
+        <select required name='ProdRef' class='form-select' aria-label='Default select example'>
+    <option   selected> Numero de produit</option>
+    <?php
+   
+    
+    foreach ($Produits as $Num) {  ?>
+       <option   value=<?php
+      echo $Num["refProduit"] ; 
+       ?>
+        >
+        <?php
+         echo $Num["refProduit"] ;
+          ?>
+      </option>
+   <?php } ?>
+  </select>
+          </div>
+            
+            
+            
+            
             <div class="form-floating mb-2">
         <input type="text"  name="QteProd"  required class="form-control" id="RS" placeholder=" "/>
-            <label for="RS">Quantite du Produit<span class="required">*</span></label></div>
-            
-           
+        <label for="RS">Quantite du Produit<span class="required">*</span></label></div>
+        
+        
+        <input type="hidden"  name="Insert"  />
 <!-- zwa9 -->
 
 <div class="modal-footer">
@@ -27,9 +52,6 @@
   </div>
 </div>
 
-<?php 
-include 'header.php';
-?>
 
 
 <?php 
@@ -39,6 +61,12 @@ include 'header.php';
 
 if (isset($_GET["id"])) {
 $verify_Com = $Connection->fetchDataBYONE('commande' , 'numCommande ' , $_GET["id"])->fetchColumn();
+$ProD= $Connection->fetchALL('produit');
+
+
+
+
+
 if ($verify_Com == 0 ) {
     include_once 'error.php';
     return;
@@ -48,55 +76,46 @@ if ($verify_Com == 0 ) {
 // verify integrity ie verify product 
 
 
-if(isset($_POST["ProdRef"])){
- $insertVerify =  $Connection->fetchDataBYONE('produit' , 'refProduit' ,$_POST["ProdRef"] )->fetchColumn();
-  if ($insertVerify == 0 ) {
-    include_once 'error.php';
-    return;
+
+
+
+if (isset($_POST["Insert"]  )  ) {
+  # code...
+  
+  
+  
+  $values =array($_POST["ProdRef"], $_POST["QteProd"] ,$_GET["id"]);
+  $Connection->InsertValues('Ligne_Commande' , $values);
+  
 }
-
-
-
-
-
-
-
-    $values =array($_POST["ProdRef"], $_POST["QteProd"] ,$_GET["id"]);
-    $Connection->InsertValues('Ligne_Commande' , $values);
-
-
-}
-
-if(isset($_POST["Edit"])){
-  $insertVerify =  $Connection->fetchDataBYONE('produit' , 'refProduit' ,$_POST["RefProduct"] )->fetchColumn();
-  if ($insertVerify == 0 ) {
-    include_once 'error.php';
-    return;
-}
-
+  if(isset($_POST["Edit"])){
+    
     $values =array($_POST["RefProduct"], $_POST["QuantCom"]);
     $Connection->ModifyLcom($_GET["id"],$_POST["ProdP"],$values);
+  }
+  
+  
+    
+    if(isset($_POST["Delete"])){
 
-
-}
-if(isset($_POST["Delete"])){
-    $Connection->DeleteLcom($_POST["ProRef"],$_GET["id"]);
-
-
-}
-
-$Client = $Connection->fetchDataBYONE('commande' , 'numCommande' , $_GET["id"])->fetch();  // current Commande
-$LComs = $Connection->fetchDataBYhell('ligne_commande' , 'ligne_commande.numCommande' , $_GET["id"]); // Commande's Lcommandes
-$idcom = $_GET["id"];
-}
-?>
+      $Connection->DeleteLcom($_POST["ProRef"],$_GET["id"]);
+      
+      
+    }
+    
+  }
+    $Client = $Connection->fetchDataBYONE('commande' , 'numCommande' , $_GET["id"])->fetch();  // current Commande
+    $LComs = $Connection->fetchDataBYhell('ligne_commande' , 'ligne_commande.numCommande' , $_GET["id"]); // Commande's Lcommandes
+    $idcom = $_GET["id"];
+    
+    ?>
 
 <div class='col-md-12 col-lg-12 col-sm-12'>
-                        <div class='card white-box p-0'>
-                                <div class='card-body'>
-                                    <h6 class='box-title mb-0 ' style='margin-top: 30px;'>Command Numero #<?php  echo $idcom ?> </div>
+  <div class='card white-box p-0'>
+    <div class='card-body'>
+      <h6 class='box-title mb-0 ' style='margin-top: 30px;'>Command Numero #<?php  echo $idcom ?> </div>
                                 <table id='datatable' >
-                                <thead>
+                                  <thead>
                                     <tr>
                                         <th >#</th>
                                         <th>refProduit </th>
@@ -106,7 +125,7 @@ $idcom = $_GET["id"];
                                         
                                     </tr>
                                 </thead>
-                                 <!-- Product  INFO--> 
+                                <!-- Product  INFO--> 
                                  <tbody>
 
                                     
@@ -147,8 +166,32 @@ if (is_array($LComs)){
 <form action='LigneCommande.php?id=".$idcom."' method='POST'>
 
 <div class='form-floating mb-2'>
-<input type='text'   name='RefProduct' class='form-control' value='".$LCom["refProduit"]." ' required id='floatingInput' placeholder=' '/>
-<label for='floatingInput'>Numero du Product<span class='required'>*</span></label>
+
+
+
+
+  "; 
+
+  
+  ?>
+
+<select required name='RefProduct' class='form-select' aria-label='Default select example'>
+<option   selected> Numero de produit</option>
+<?php
+foreach ($ProD as $Num) {  ?>
+   <option   value=<?php
+  echo $Num["refProduit"] ; 
+   ?>
+    >
+    <?php echo $Num["refProduit"] ; ?>
+  </option>
+<?php }?>
+</select>
+<?php
+echo "
+
+
+
 </div>
 
 <div class='form-floating mb-2'>
